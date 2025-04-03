@@ -1,0 +1,39 @@
+body{
+    text-align: center;
+    font-size: 2em;
+    background: linear-gradient(#ec6e06, #dc3f0e);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+}
+
+#myButton{
+    font-size: 1em;
+    font-family: serif;
+    padding: 20px;
+    border: solid 5px black;
+    border-radius: 5px;
+    transition: background-color 0.25s;
+    cursor: pointer;
+    background-color: #a8a87f;
+}
+
+#myButton:hover{
+    background-color: #cf3d08;
+}
+#myButton:active{
+    background-color: #ec0960 ;
+}
+
+#myImg{
+    height:200px;
+    width:200px;
+}
+
+#myLabel{
+    font-size: 3em;
+    font-family: serif;
+}
+
+
+
