@@ -1,5 +1,5 @@
 // this keyword
-
+// arrow functions cannot use this keyword
 //example 1
 
 const person1 ={
