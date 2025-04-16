@@ -11,6 +11,8 @@ class Animal{
         console.log(`This ${this.name} is sleeping.`)
     }
 
+
+    //
 }
 
 class Rabbit extends Animal{
