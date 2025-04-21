@@ -90,7 +90,7 @@ console.log("Example 3");
 
       function decreaseScore(points){
           score -= points;
-          console.log(`+${points}pts`);
+          console.log(`-${points}pts`);
       }
 
       function getScore(){
