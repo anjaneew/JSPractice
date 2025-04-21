@@ -17,7 +17,6 @@ function loadData(){
     console.time("loadData");
 
     for(let i = 0; i < 1000; i++){
-        console.log("loading data"); //loading data
     }
 
     console.timeEnd("loadData");
@@ -27,7 +26,6 @@ function processData(){
     console.time("processData");
 
     for (let i = 0; i < 40000; i++){
-        console.log("data processing");
     }
 
     console.timeEnd("processData");
