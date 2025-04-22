@@ -1,0 +1,58 @@
+body{
+    font-family: Roboto, sans-serif;
+    background-color: hsl(217, 17%, 58%);
+}
+
+#myH1{
+    font-size: 3em;
+    text-align: center;
+}
+#container{
+    background-color: hsl(218, 53%, 76%);
+    max-width: 500px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px hsl(216, 32%, 31%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+label{
+    font-size: 2em;
+    font-weight: bold;
+}
+input{
+    width: 50%;
+    font-size: 2em;
+    border: 2px groove hsl(217, 17%, 58%);
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px 2px 10px 2px;
+}
+button{
+    background-color: hsl(217, 81%, 57%);
+    font-size: 2em;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: hsl(218, 61%, 39%);
+    text-shadow: hsl(220, 92%, 21%) 2px 2px ;
+}
+button:active{
+    background-color: hsl(217, 62%, 25%);
+    text-shadow: hsl(217, 94%, 6%) 2px 2px ;
+}
+#total{
+    font-size: 2.5em;
+    font-weight: bold;
+}
+#total-amount{
+    color: #148e47;
+    font-weight: bold;
+    text-shadow: hsl(129, 93%, 16%) 2px 2px ;
+}
