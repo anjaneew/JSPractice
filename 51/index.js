@@ -4,6 +4,9 @@
 console.log("Example 1 Today's Date");
 const date1 = new Date();
 console.log(date1);
+console.log(Date.now()); //1745467499072 current time in milliseconds
+console.log(new Date().toLocaleString());//4/24/2025, 7:05:36 AM
+console.log(date1.getMonth());
 console.log("_________________");
 
 //Example 2 customized date
