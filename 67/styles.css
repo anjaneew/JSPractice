@@ -1,0 +1,36 @@
+#myBox{
+    background-color: lightgreen;
+    font: bold italic 2em "Noto Serif", sans-serif;
+    height:  150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20%;
+}
+
+#myP{
+    background-color: #1987f3;
+    font: bold italic 1.5em "Noto Serif", sans-serif;
+    height:  150px;
+    width:  150px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20%;
+}
+
+#myBox2{
+    background-color: #c11414;
+    font: bold italic 2em "Noto Serif", sans-serif;
+    height:  150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20%;
+}
+
+#myBtn{
+    font-size: 2rem;
+}
