@@ -1,0 +1,10 @@
+button{
+    font-size: 2rem;
+    margin: 20px;
+    justify-content: center;
+}
+
+h1{
+    font: italic bold 2rem darkblue;
+    margin-left: 100px;
+}
