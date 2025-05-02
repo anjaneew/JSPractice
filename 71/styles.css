@@ -1,0 +1,36 @@
+#myButton{
+     font-size: 4rem;
+     border: none;
+     border-radius: 5px;
+     padding: 10px 15px;
+     margin: 30px;
+ }
+#myH1{
+    font-size: 4rem;
+    margin: 30px;
+    width: auto;
+    padding: 10px 15px;
+}
+
+.buttons{
+    font-size: 4rem;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 30px;
+}
+
+.enabled{
+    background-color: #2a83cf;
+    color: white;
+}
+.hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px #3c3939;
+    font-weight: bold;
+}
+.disabled{
+    background-color: #575252;
+    color: #979393;
+}
+
