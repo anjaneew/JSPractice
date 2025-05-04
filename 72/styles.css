@@ -1,0 +1,69 @@
+body{
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d6cfd1;
+}
+#myH1{
+    font-size: 3rem;
+    color: #0e1e45;
+}
+.choices{
+    margin-bottom: 30px;
+}
+.choices button{
+    font-size: 7.5rem;
+    border: none;
+    border-radius: 100px;
+    box-shadow: 5px 5px 10px black;
+    margin: 0 10px;
+    min-width: 150px;
+    background-color: #427cb3;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.choices button:hover, #resetBtn:hover{
+    background-color: #218aed;
+    box-shadow: 5px 5px 20px black;
+}
+
+.choices button:active, #resetBtn:active{
+    background-color: #024b97;
+    box-shadow: 5px 5px 5px black;
+}
+
+#playerDisplay, #computerDisplay{
+    font-size: 2.5rem;
+    color: #324261;
+}
+#resultDisplay{
+    font-size: 5rem;
+    margin: 10px 0;
+}
+.scoreDisplay{
+    font-size: 2rem;
+}
+.greenText, #playerScoreDisplay{
+    color: #0b801e;
+}
+.redText, #computerScoreDisplay{
+    color: #d50a6e;
+}
+#resetBtn{
+    font-size: 3rem;
+    border: none;
+    border-radius: 100px;
+    color: white;
+    box-shadow: 5px 5px 10px black;
+    margin: 0 10px;
+    min-width: 150px;
+    background-color: #427cb3;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
