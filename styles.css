@@ -1,4 +1,36 @@
 body{
-    font-size: 2em;
+    color: black;
+    background-color: #25d3bb;
+}
+h1, h2{
+    text-align: center;
+}
 
+ol {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+ol li {
+    /*text-align: center;*/
+    margin: 10px;
+}
+
+.emoji {
+    font-size: 40px; /* Make the emoji bigger */
+    display: block;
+    margin-bottom: 5px; /* Space between emoji and text */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #007BFF; /* Change color on hover for better interaction */
 }
