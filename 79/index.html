@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 79 Fetch()</title>
+<!--    <link rel="stylesheet" href="styles.css">-->
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/?size=100&id=xjR5QLocktta&format=png&color=000000">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div style="text-align:center">
+        <hr>
+        <label for="pokemonName" style="font-size:3rem; margin:10px;" > Which pokeman would you like to see? </label>
+        <input type="text" id="pokemonName" placeholder="Enter pokeman name" style="font-size:2rem; margin:10px;"> <br>
+        <button onclick="fetchData()" style="font-size:1.25rem ; margin:10px;" >Fetch pokeman</button><br>
+
+        <img src="" alt="Pokeman Sprite" id="pokemanSprite" style="display:none; width:300px; height:auto">
+        <hr>
+    </div>
+    <div>
+        <ol><h1>Most popular pokeman</h1>
+
+            <li>Charizard</li>
+            <li>Charmander</li>
+            <li>Pikachu</li>
+            <li>Bulbasaur</li>
+            <li>Typhlosion</li>
+            <li>Eevee</li>
+            <li>Mewtwo</li>
+            <li>Arcanine</li>
+            <li>Dragonite</li>
+        </ol>
+
+    </div>
+    <h1 id="myH1" style="text-align:center">Notes:</h1>
+    <h2 style="text-align:center"> HTTP responses status codes</h2>
+    <h3>HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in 5 classes:</h3>
+    <ol style="font-size:2rem">
+        <li>Informational responses (100-199)</li>
+        <li>Successful responses (200-299)</li>
+        <li>Redirection messages (300-399)</li>
+        <li>Client error responses (400-499)</li>
+        <li>Server error responses (500-599)</li>
+    </ol>
+    <script src="index.js"></script>
+</body>
+</html>
