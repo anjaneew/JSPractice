@@ -22,6 +22,14 @@ function func1(callback){
         callback()}, 3000);
 }
 
+function func2(){
+    setTimeout(()=>{
+        console.log("Task 7");
+        console.log("Task 8");
+        console.log("Task 9");
+        console.log("Task 10");
+    }, 3000)
+}
 
 
 func1(func2);
