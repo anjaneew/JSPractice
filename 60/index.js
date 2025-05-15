@@ -11,7 +11,7 @@
 // console.log("Task 3");
 // console.log("Task 4");
 // console.log("Task 5");
-// //2 , 3, 4, 5, 1
+// //the order is 2 , 3, 4, 5, 1
 
 //Example1
 
