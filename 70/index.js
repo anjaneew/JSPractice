@@ -1,4 +1,5 @@
-//NodeList
+//NodeList - collection of DOM elements selected from the page
+//            by class, tag, ID, or any valid CSS selector.
 
 //--------Example 1 Create NodeList-----------
 let buttons = document.querySelectorAll(".myButtons");

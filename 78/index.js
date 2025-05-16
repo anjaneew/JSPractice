@@ -27,7 +27,7 @@ deleteCookie("firstName");
 console.log(document.cookie);
 getCookie("firstName");
 
-function setCookie(name, value, daysToLive){
+function setCookie(name,value,daysToLive){
     const date = new Date();
 //                                            adding in milliseconds
     date.setTime(date.getTime() + daysToLive * 24 * 60 * 60 * 1000);
