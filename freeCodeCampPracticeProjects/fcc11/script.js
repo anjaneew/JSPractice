@@ -111,6 +111,13 @@
             console.log(removedFruits); // [ 'date', 'cherry' ]
 */
 
+/** REGEX removing all special characters
+ * 
+ * 
+ * const removeSpecialChars = (str) => {
+    return str.trim().replace(/[^0-9a-zA-Z ]/g, "");
+} */
+
 const taskForm = document.getElementById("task-form");//
 const confirmCloseDialog = document.getElementById("confirm-close-dialog");//Dialog
 const openTaskFormBtn = document.getElementById("open-task-form-btn");//
