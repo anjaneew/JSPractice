@@ -4,7 +4,7 @@ function getRandomComputerResult() {
   /* Better way: use length
   return options[Math.floor(Math.random()*3)];
     */
-    const randomIndex = Math.floor(Math.random * options.length);
+    const randomIndex = Math.floor(Math.random() * options.length);
     return options[randomIndex];
 }
 
@@ -100,4 +100,22 @@ function resetGame() {
 
 /* later deleted by fcc
 showResults("Rock"); */
+
+resetGameBtn.addEventListener("click", resetGame);
+
+const rockBtn = document.getElementById("rock-btn");
+const paperBtn = document.getElementById("paper-btn");
+const scissorsBtn = document.getElementById("scissors-btn");
+
+rockBtn.addEventListener("click", function () {
+  showResults("Rock");
+});
+
+paperBtn.addEventListener("click", function () {
+  showResults("Paper");
+});
+
+scissorsBtn.addEventListener("click", function () {
+  showResults("Scissors");
+});
 
