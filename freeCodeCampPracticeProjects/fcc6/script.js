@@ -108,14 +108,17 @@ const paperBtn = document.getElementById("paper-btn");
 const scissorsBtn = document.getElementById("scissors-btn");
 
 rockBtn.addEventListener("click", function () {
+  console.log("Rock button clicked");
   showResults("Rock");
 });
 
 paperBtn.addEventListener("click", function () {
+  console.log("Paper button clicked");
   showResults("Paper");
 });
 
 scissorsBtn.addEventListener("click", function () {
+  console.log("Scissors button clicked");
   showResults("Scissors");
 });
 
