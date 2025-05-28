@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Catalogue</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <h1>Library Catalogue</h1>
+        <nav id="nav-bar">
+            <ul>
+                <li><a href="#input-container">Search Books</a></li>
+                <li><a href="#catalogue-display">Library Database</a></li>
+                <li><a href="./admin.html">Admin Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="container">
+            <div id="user-input-container">
+                <div id="input-container">
+                <form>   
+                    <fieldset>
+                        <legend>Publication details:</legend>
+                <details> 
+                    <summary>Title/Author/Publisher/ISBN</summary>
+                <label for="title">Title:</label>
+                <input class="input text" type="text" id="title" name="title" placeholder="title"><br>
+                <label for="author">Author:</label>
+                <input class="input text" type="text" id="author" name="author" placeholder="author"><br>
+                <label for="publisher">Publisher:</label>
+                <input class="input text" type="text" id="publisher" name="publisher" placeholder="publisher"><br>
+                <label for="isbn">ISBN:</label>
+                <input class="input text" type="text" id="isbn" name="isbn" placeholder="ISBN"><br>
+            </details>
+
+                    </fieldset>
+                
+
+<fieldset>
+                        <legend>Search by catalogue details:</legend>
+                <details> <summary>Dewey Decimal Code / Call Number / Year</summary>
+                <label for="dewey-decimal">Dewey Decimal:</label>
+                <input class="input" type="number" id="dewey-decimal" name="dewey-decimal" placeholder="Enter Code">
+                <label for="call-num">Call Number:</label>
+                <input class="input" type="number" id="call-num" name="call-number" placeholder="Call Number">
+                <label for="year">Publication Year:</label>
+                <input class="input" type="number" id="year" name="year" placeholder="Year"> </details>                    </fieldset>
+
+
+                <fieldset>
+                        <legend>Search by category:</legend>
+                <details> <summary>Format / Language / Subject</summary>
+
+                <label for="format">Format :</label>
+                <select class="input" id="format" name="format">
+                    <option value="" selected></option>
+                    <option value="book">Book</option>
+                    <option value="e-book">e-Book</option>
+                    <option value="magazine">Magazine</option>
+                </select> 
+
+                <label for="language">Language:</label>
+                <select class="input" id="language" name="language">
+                    <option value="" selected></option>
+                    <option value="english">English</option>
+                    <option value="sinhala">Sinhala</option>
+                    <option value="tamil">Tamil</option>
+                </select> 
+
+                <label for="subject">Subject:</label>
+                <select class="input" id="subject" name="subject">
+                    <option value="" selected></option>
+                    <option value="english">English</option>
+                    <option value="sinhala">Sinhala</option>
+                    <option value="tamil">Tamil</option>
+                    <option value="dahampasal">Dahampasal</option>
+                </select> 
+        
+                </details>                    </fieldset> 
+                <button type="submit" id="search" name="search">Search🔎</button>
+                <button type="reset" id="clear" name="clear">Clear</button>
+                </form>
+                </div>
+
+                <div id="user-data-display">
+
+                </div>
+            </div>
+            <div id="catalogue-display">
+
+            </div>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
