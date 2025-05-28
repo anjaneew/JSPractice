@@ -4,7 +4,45 @@
      * Local storage is a web browser feature that lets web applications store key-value pairs persistently within a user's browser. This allows web apps to save data during one session, then retrieve it in a later page session.
     
     CRUD
+
     In this TODO application, you'll learn how to handle form inputs, manage local storage, perform CRUD (Create, Read, Update, Delete) operations on tasks, implement event listeners, and toggle UI elements.
+
+    localStorage offers methods for saving, retrieving, and deleting items. The items you save can be of any JavaScript data type.
+
+    For instance,
+    
+    setItem() method is used to save an item, 
+    getItem() method retrieves the item. 
+    removeItem() To delete a specific item
+    clear() delete all items in the storage
+
+    Here's how you can save an item:
+        Example Code
+            localStorage.setItem("key", value);
+                // value could be string, number, or any other data type
+
+    Example Code             
+
+        const myTaskArr = [
+            { task: "Walk the Dog", date: "22-04-2022" },
+            { task: "Read some books", date: "02-11-2023" },
+            { task: "Watch football", date: "10-08-2021" },];
+
+        localStorage.setItem("data", myTaskArr);
+
+    //If you check the "Application" tab of your browser console, you'll notice a series of [object Object]. This is because everything you save in localStorage needs to be in string format.
+
+    //To resolve the issue, wrap the data you're saving in the JSON.stringify() method. Then, check local storage again to observe the results.
+
+                            ("key", value);             
+        localStorage.setItem("data", JSON.stringify(myTaskArr));
+
+        const getTaskArr = localStorage.getItem("data");
+        const getTaskArrObj = JSON.parse(localStorage.getItem("data"));
+        localStorage.removeItem("data");
+        localStorage.clear();
+        console.log(getTaskArr);
+        console.log(getTaskArrObj);            
  */
 
 /** modal
@@ -14,6 +52,9 @@
 
     Example Code
     dialogElement.showModal(); 
+
+    confirmCloseDialog.showModal(); 
+    //This will display a modal with the Discard and Cancel buttons.
  */
 
  /** HTML Dialog Element <dialog> 
@@ -43,7 +84,33 @@
             const firstNumLargerThanThree = numbers.findIndex((num) => num > 3);
 
             console.log(firstNumLargerThanThree); // prints index 2
- */    
+ */ 
+
+/** this
+ * 
+ * this is a keyword that refers to the current context. In this case, this points to the element that triggers the event – the buttons. 
+ *  ex: onclick="editTask(this)">Edit</button>
+ * */            
+            
+/**splice() 
+ * 
+    * splice() is an array method that modifies arrays by removing, replacing, or adding elements at a specified index, while also returning the removed elements.
+    *  
+    * It can take up to three arguments: 
+        * the first one is the mandatory index at which to start, 
+        * the second is the number of items to remove, 
+        * and the third is an optional replacement element. 
+
+        Example Code
+            const fruits = ["mango", "date", "cherry", "banana", "apple"];
+
+            // Remove date and cherry from the array starting at index 1
+            const removedFruits = fruits.splice(1, 2);
+
+            console.log(fruits); // [ 'mango', 'banana', 'apple' ]
+            console.log(removedFruits); // [ 'date', 'cherry' ]
+*/
+
 const taskForm = document.getElementById("task-form");//
 const confirmCloseDialog = document.getElementById("confirm-close-dialog");//Dialog
 const openTaskFormBtn = document.getElementById("open-task-form-btn");//
@@ -56,18 +123,112 @@ const titleInput = document.getElementById("title-input");
 const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
 
-const taskData = [];
+const taskData = JSON.parse(localStorage.getItem("data")) || [];
 let currentTask = {};
 
+
+//--------------Submit-------------//
+
+const removeSpecialChars = (str) => {
+    return str.trim().replace(/[^0-9a-zA-Z ]/g, "");
+}
+
+const addOrUpdateTask = () => {
+
+    if(!titleInput.value.trim()){
+        alert("Please provide a title");
+        return;
+    }
+    const dataArrIndex = taskData.findIndex( item => item.id === currentTask.id);
+    const taskObj = {
+        id: `${removeSpecialChars(titleInput.value).toLowerCase().split(" ").join("-")}-${Date.now()}`,
+        title: removeSpecialChars(titleInput.value),
+        date: dateInput.value,
+        description: removeSpecialChars(descriptionInput.value), 
+    };
+    if(dataArrIndex === -1){
+        taskData.unshift(taskObj);
+    } 
+    else {
+        taskData[dataArrIndex]= taskObj;
+    }
+
+    localStorage.setItem("data", JSON.stringify(taskData));
+
+    updateTaskContainer();
+    reset();
+
+};
+
+const updateTaskContainer = () => {
+    tasksContainer.innerHTML = "";
+    taskData.forEach(({id, title, date, description})=> {
+            tasksContainer.innerHTML += `<div class="task" id="${id}">
+            <p><strong>Title:</strong>${title}</p>
+            <p><strong>Date:</strong>${date}</p>
+            <p><strong>Description:</strong>${description}</p>
+            <button type="button" class="btn" onclick="editTask(this)">Edit</button>
+            <button type="button" class="btn" onclick="deleteTask(this)">Delete</button>
+            </div>`;
+        });
+};
+
+const deleteTask = (buttonEl) => {
+    const dataArrIndex  = taskData.findIndex( item => 
+        item.id === buttonEl.parentElement.id 
+    );
+    buttonEl.parentElement.remove();
+    taskData.splice(dataArrIndex, 1);
+
+    localStorage.setItem("data", JSON.stringify(taskData));
+};
+
+const editTask = (buttonEl) => {
+    const dataArrIndex = taskData.findIndex( item => 
+        item.id === buttonEl.parentElement.id
+    );
+
+    currentTask = taskData[dataArrIndex]; 
+    titleInput.value = currentTask.title;
+    dateInput.value = currentTask.date;
+    descriptionInput.value = currentTask.description;
+
+    addOrUpdateTaskBtn.innerText = "Update Task";
+    taskForm.classList.toggle("hidden");
+};
+
+//--------------Clear Input Fields-------------//
+
+const reset = () => {
+    addOrUpdateTaskBtn.innerText = "Add Task";
+    titleInput.value = "";
+    dateInput.value  = "";
+    descriptionInput.value = "";
+    taskForm.classList.toggle("hidden");
+    currentTask = {};
+};
+
 //--------------Modal-------------//
+
+if(taskData.length){
+    updateTaskContainer();
+}
 
 openTaskFormBtn.addEventListener("click", ()=> {
     taskForm.classList.toggle("hidden");
 });
 
 closeTaskFormBtn.addEventListener("click",() => {
-    confirmCloseDialog.showModal(); 
-    //This will display a modal with the Discard and Cancel buttons.
+    const formInputsContainValues = titleInput.value || dateInput.value || descriptionInput.value;
+
+    const formInputValuesUpdated = titleInput.value !== currentTask.title || dateInput.value  !==  currentTask.date || descriptionInput.value !== currentTask.description;
+
+    if(formInputsContainValues && formInputValuesUpdated){
+        confirmCloseDialog.showModal();
+    } else{
+        
+        reset();
+    }
 });
 
 cancelBtn.addEventListener("click", () => {
@@ -76,20 +237,19 @@ cancelBtn.addEventListener("click", () => {
 
 discardBtn.addEventListener("click", () => {
     confirmCloseDialog.close();
-    taskForm.classList.toggle("hidden");
+    // taskForm.classList.toggle("hidden");  //replaced by reset
+    reset();
 });
 
 //---------------input fields-----------//
 
 taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const dataArrIndex = taskData.findIndex( item => item.id === currentTask.id);
-    const taskObj = {
-        id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
-        title: titleInput.value,
-        date: dateInput.value,
-        description: descriptionInput.value, 
-    };
+    addOrUpdateTask();
 });
 
-//stoppimg at 21 
+
+//-------------CRUD---------------------//
+
+
+
