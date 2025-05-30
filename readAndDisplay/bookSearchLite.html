@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book Search</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 1rem; }
+  input { padding: 0.5rem; width: 100%; max-width: 400px; margin-bottom: 1rem; }
+  .book { border-bottom: 1px solid #ccc; padding: 0.5rem 0; }
+  .book h3 { margin: 0 0 0.25rem 0; }
+</style>
+</head>
+<body>
+  <h1>Book Search</h1>
+  <input id="search" type="text" placeholder="Search by title, author, genre..." />
+  <div id="results"></div>
+
+  <script>
+    const data = [
+      {
+        "Title": "Pride and Prejudice",
+        "Author": "Jane Austen",
+        "Genre/Subject": "Fiction/Romance",
+        "Publisher": "T. Egerton",
+        "Publication Year": 1813
+      },
+      {
+        "Title": "1984",
+        "Author": "George Orwell",
+        "Genre/Subject": "Dystopian Fiction",
+        "Publisher": "Secker & Warburg",
+        "Publication Year": 1949
+      },
+      {
+        "Title": "Lord of the Flies",
+        "Author": "William Golding",
+        "Genre/Subject": "Allegorical Fiction",
+        "Publisher": "Faber and Faber",
+        "Publication Year": 1954
+      }
+      // Add all books here
+    ];
+
+    const searchInput = document.getElementById('search');
+    const resultsDiv = document.getElementById('results');
+
+    function renderBooks(books) {
+      if(books.length === 0) {
+        resultsDiv.innerHTML = '<p>No books found.</p>';
+        return;
+      }
+      resultsDiv.innerHTML = books.map(book => `
+        <div class="book">
+          <h3>${book.Title}</h3>
+          <p><strong>Author:</strong> ${book.Author}</p>
+          <p><strong>Genre:</strong> ${book["Genre/Subject"]}</p>
+          <p><strong>Publisher:</strong> ${book.Publisher} (${book["Publication Year"]})</p>
+        </div>
+      `).join('');
+    }
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const filtered = data.filter(book =>
+        book.Title.toLowerCase().includes(query) ||
+        book.Author.toLowerCase().includes(query) ||
+        book["Genre/Subject"].toLowerCase().includes(query)
+      );
+      renderBooks(filtered);
+    });
+
+    renderBooks(data);
+  </script>
+</body>
+</html>
