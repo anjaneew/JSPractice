@@ -21,19 +21,19 @@
         <div id="container">
             <div id="user-input-container">
                 <div id="input-container">
-                <form>   
+                <form id="form">   
                     <fieldset>
                         <legend>Publication details:</legend>
                 <details> 
                     <summary>Title/Author/Publisher/ISBN</summary>
                 <label for="title">Title:</label>
-                <input class="input text" type="text" id="title" name="title" placeholder="title"><br>
+                <input class="input text" type="text" id="title-input" name="title" placeholder="title"><br>
                 <label for="author">Author:</label>
-                <input class="input text" type="text" id="author" name="author" placeholder="author"><br>
+                <input class="input text" type="text" id="author-input" name="author" placeholder="author"><br>
                 <label for="publisher">Publisher:</label>
-                <input class="input text" type="text" id="publisher" name="publisher" placeholder="publisher"><br>
+                <input class="input text" type="text" id="publisher-input" name="publisher" placeholder="publisher"><br>
                 <label for="isbn">ISBN:</label>
-                <input class="input text" type="text" id="isbn" name="isbn" placeholder="ISBN"><br>
+                <input class="input text" type="text" id="isbn-input" name="isbn" placeholder="ISBN"><br>
             </details>
 
                     </fieldset>
@@ -43,11 +43,11 @@
                         <legend>Search by catalogue details:</legend>
                 <details> <summary>Dewey Decimal Code / Call Number / Year</summary>
                 <label for="dewey-decimal">Dewey Decimal:</label>
-                <input class="input" type="number" id="dewey-decimal" name="dewey-decimal" placeholder="Enter Code">
+                <input class="input" type="number" id="dewey-decimal-input" name="dewey-decimal" placeholder="Enter Code">
                 <label for="call-num">Call Number:</label>
-                <input class="input" type="number" id="call-num" name="call-number" placeholder="Call Number">
+                <input class="input" type="number" id="call-num-input" name="call-number" placeholder="Call Number">
                 <label for="year">Publication Year:</label>
-                <input class="input" type="number" id="year" name="year" placeholder="Year"> </details>                    </fieldset>
+                <input class="input" type="number" id="year-input" name="year" placeholder="Year"> </details>                    </fieldset>
 
 
                 <fieldset>
@@ -55,7 +55,7 @@
                 <details> <summary>Format / Language / Subject</summary>
 
                 <label for="format">Format :</label>
-                <select class="input" id="format" name="format">
+                <select class="input" id="format" name="format-input">
                     <option value="" selected></option>
                     <option value="book">Book</option>
                     <option value="e-book">e-Book</option>
@@ -63,7 +63,7 @@
                 </select> 
 
                 <label for="language">Language:</label>
-                <select class="input" id="language" name="language">
+                <select class="input" id="language" name="language-input">
                     <option value="" selected></option>
                     <option value="english">English</option>
                     <option value="sinhala">Sinhala</option>
@@ -71,7 +71,7 @@
                 </select> 
 
                 <label for="subject">Subject:</label>
-                <select class="input" id="subject" name="subject">
+                <select class="input" id="subject" name="subject-input">
                     <option value="" selected></option>
                     <option value="english">English</option>
                     <option value="sinhala">Sinhala</option>
@@ -80,8 +80,8 @@
                 </select> 
         
                 </details>                    </fieldset> 
-                <button type="submit" id="search" name="search">Search🔎</button>
-                <button type="reset" id="clear" name="clear">Clear</button>
+                <button type="submit" id="searchBtn" name="search">Search🔎</button>
+                <button type="reset" id="clearBtn" name="clearBtn">Clear</button>
                 </form>
                 </div>
 
@@ -94,6 +94,7 @@
             </div>
         </div>
     </main>
-    <script src="./script.js"></script>
+        <script src="./script.js"></script>
+
 </body>
 </html>
