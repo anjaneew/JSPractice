@@ -6,18 +6,16 @@
  * argument, the .reduce() method uses the first element of the 
  * array as the accumulator, which can lead to unexpected results.
  * Example Code setting the initial value to an empty string:
- * 
-    array.reduce((acc, el) => acc + el.toLowerCase(), "");
+         array.reduce((acc, el) => acc + el.toLowerCase(), "");
  */
 
-const getMean = (array) => 
+const getMean = (array) => array.reduce((acc, el) => acc + el, 0)/array.length;
+    //Method 2 - implicit return 
+    
     /**Method 1 */
     // const sum =  array.reduce((acc, el)=>  acc + el, 0);
     // const mean = sum/array.length;
     // return mean;
-
-    //Method 2 - implicit return 
-    array.reduce((acc, el) => acc + el, 0)/array.length;
     
 const calculate = () => {
     const value = document.querySelector("#numbers").value;
