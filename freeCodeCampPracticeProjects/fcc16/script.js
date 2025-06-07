@@ -60,7 +60,28 @@ const getMedian = (array) => {
  *              array.sort((a,b) => a-b);
  */
 
-const getMode = (array) => {
+/**Set 
+ * step 38
+ * There are a few edge cases to account for when calculating the mode of 
+ * a dataset. First, if every value appears the same number of times, 
+ * there is no mode.
+ * To calculate this, you will use a Set. A Set is a data structure that 
+ * only allows unique values. If you pass an array into the Set 
+ * constructor, it will remove any duplicate values.
+ * Start by creating an if statement. In the condition, create a Set with 
+ * new Set() and pass it the Object.values() of your counts object. If the 
+ * size property of this Set is equal to 1, that tells you every value 
+ * appears the same number of times. In this case, return null from your 
+ * function.
+ * 
+ * answer: FCC NO FUCKING Example
+ * 
+      if (new Set(Object.values(counts)).size === 1){
+          return null;
+          }
+*/
+
+ const getMode = (array) => {
     const counts = {};
     array.forEach(el => counts[el] = counts[el] ? counts[el]+ 1 : 1 );
 
@@ -73,6 +94,14 @@ const getMode = (array) => {
             counts[el] = 1;
         }
      */
+
+    if (new Set(Object.values(counts)).size === 1){
+    return null;
+    }
+
+   const highest = Object.keys(counts).sort((a,b) => counts[b] - counts[a])[0];
+   const mode = Object.keys(counts).filter((el)=> counts[el] === counts[highest]);
+   return mode.join(", ");
 };
 
 /**Calcuate occurences
@@ -96,6 +125,58 @@ Example Code
 { 1: 3, 2: 3, 3: 3, 4: 3, 5: 2 }
  */
 
+const getRange = (array) => Math.max(...array) - Math.min(...array);
+
+const getVariance = (array) => {
+  const mean = getMean(array);
+
+  /**Method 1 
+   * 
+   * const differences = array.map((el)=> el - mean);
+   * const squaredDifferences = differences.map((el)=> el ** 2 );
+   * const sumSquaredDifferences = squaredDifferences.reduce((acc, el) => acc + el, 0);
+  */
+
+  //Method 2 using .reduce() to avoid extra arrays
+
+  const variance = array.reduce((acc, el) => {
+    const difference = el - mean;
+    const squared = difference ** 2;
+    return acc + squared; 
+  },0)/array.length;
+
+  return variance;
+};
+
+/**square root
+ * To calculate a root exponent, such as  x−−√n
+ , you can use an inverted exponent  x1/n
+ . JavaScript has a built-in Math.pow() function that can be used to calculate exponents.
+
+Here is the basic syntax for the Math.pow() function:
+
+Example Code
+Math.pow(base, exponent);
+Here is an example of how to calculate the square root of 4:
+
+Example Code
+const base = 4;
+const exponent = 0.5;
+// returns 2
+Math.pow(base, exponent);
+*/
+
+const getStandardDeviation = (array) => {
+  const variance = getVariance(array);
+
+  // Method 1
+  // const standardDeviation = Math.pow(variance, 0.5); 
+
+  const standardDeviation = Math.sqrt(variance);
+  return standardDeviation;
+
+};
+
 const calculate = () => {
     const value = document.querySelector("#numbers").value;
     // const array = value.split(",");
@@ -105,10 +186,18 @@ const calculate = () => {
     // const filtered = numbers.filter(el => !isNaN(el));
 
     const mean = getMean(numbers);
-    document.querySelector("#mean").textContent = mean;
-
     const median = getMedian(numbers);
+    const mode = getMode(numbers);
+    const range = getRange(numbers);
+    const variance = getVariance(numbers);
+    const standardDeviation = getStandardDeviation(numbers);
+
+    document.querySelector("#mean").textContent = mean;
     document.querySelector("#median").textContent = median;
+    document.querySelector("#mode").textContent = mode;
+    document.querySelector("#range").textContent = range;
+    document.querySelector("#variance").textContent = variance;
+    document.querySelector("#standardDeviation").textContent = standardDeviation;
 };
 
 /**array is odd or even  modulus operator %
@@ -126,9 +215,10 @@ const calculate = () => {
  *  If the remainder is 0, the number is even. If the remainder is 1, the *  number is odd.
 */
 
-const testArr1 = [1, 2, 3, 4, 5];
-const isEven = (testArr2.length % 2 === 0);
-console.log(isEven);
+// const testArr1 = [1, 2, 3, 4, 5];
+// const isEven = (testArr2.length % 2 === 0);
+// console.log(isEven);
+
 
 /***middle number
  * -------------------odd number of elements----------------------
