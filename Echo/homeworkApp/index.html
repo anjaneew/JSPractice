@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div id="flex-container">
+            <h1>Homework App</h1>
+            <div id="add-container" class="box">
+                <h2>Add Tasks</h2>
+                <label for="add-title">Title: </label>
+                <input id="add-title" type="text" class="input"><br>
+                <label for="add-details">Details: </label>
+                <input id="add-details" type="text" class="details input"><br>
+                <label for="add-date">Due Date: </label>
+                <input id="add-date" type="date" class="input"><br><br>
+                <button id="add-btn" type="button">Add Task</button>
+            </div>
+            <div id="update-container" class="box">
+                <h2>Update</h2>
+                <h3>Update by the task number</h3>
+                <label>Task Number</label>
+                <input id="update-task-num" type="number" class="update byNumber input"><br>
+                <label for="update-task-title">Title: </label>
+                <input id="update-task-title" type="text" class="update byNumber input">
+                <label for="update-task-details">Details: </label>
+                <input  id="update-task-details" type="text" class="update byNumber input">
+                <label for="update-task-date">Due Date: </label>
+                <input id="update-task-date" type="date" class="input">
+                <button id="update-btn" type="button" class="update details">Update</button>
+
+                <h3>Search to update</h3>
+                <input id="search-by-title" class="update input" type="text" placeholder="Enter title to search"> 
+                <button id="search-btn" type="button" class="update">Search</button><br>
+
+                <label for="update-title">Title: </label>
+                <input id="update-title" type="text" class="update byNumber input">
+                <label for="update-details">Details: </label>
+                <input  id="update-details" type="text" class="update byNumber input">
+                <label for="update-date">Due Date: </label>
+                <input id="update-date" type="date" class="input">
+                
+                <button id="save-btn" type="button" class="update">Save</button>
+            </div>
+            <div id="delete-container" class="box">
+                <h2>Delete Task</h2>
+                <input id="delete-input" type="text"  class="input" placeholder="Enter task number or title">
+                <button id="delete-btn" type="button">Delete Task</button>
+                <button id="clear-btn" type="button">Clear</button>
+            </div>
+            <div id="display-container" class="box">
+             <h2>Tasks List</h2>  
+             <table id="display-tasks">
+                <tr>
+                    <th>#</th>
+                    <th>Task</th>
+                    <th>Details</th>
+                    <th>Due date</th>
+                </tr>
+             </table>         
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="script.js"></script>
+</body>
+</html>

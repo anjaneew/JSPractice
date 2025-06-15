@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playlist Manager</title>
+</head>
+<body>
+  <h2>Add Song</h2>
+  <input type="text" id="song" placeholder="Song Name">
+  <input type="text" id="artist" placeholder="Artist Name">
+  <button id="addBtn">Add</button>
+
+  <h2>Playlist</h2>
+  <div id="playlist"></div>
+
+  <h2>Delete Song</h2>
+  <input type="text" id="deleteInput" placeholder="Enter number, song, or artist to delete">
+  <button id="deleteBtn">Delete</button>
+
+<h2>Search to Update</h2>
+<input type="text" id="searchInput" placeholder="Search song/artist">
+<button id="searchBtn">Find</button>
+
+<!-- Only show these after search -->
+<div id="editSection" style="display:none">
+  <input type="text" id="editSong" placeholder="New Song Name">
+  <input type="text" id="editArtist" placeholder="New Artist Name">
+  <button id="saveEditBtn">Save Changes</button>
+</div>
+
+  <h2>Update Song by Number</h2>
+  
+  <input type="number" id="updateNum" placeholder="Entry Number">
+  <input type="text" id="updateSong" placeholder="New Song Name">
+  <input type="text" id="updateArtist" placeholder="New Artist Name">
+  <button id="updateBtn">Update</button>
+
+  <br><br>
+  <button id="deleteAllBtn">Delete All</button>
+
+  <script src="script3.js"> 
+    
+  </script>
+</body>
+</html>
