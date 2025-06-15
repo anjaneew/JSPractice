@@ -10,11 +10,15 @@ const updateTaskDetails = document.getElementById("update-task-details");
 const updateTaskDate = document.getElementById("update-task-date");
 
 const searchTitle = document.getElementById("search-by-title");
+const updateTitle = document.getElementById("update-title");
+const updateDetails = document.getElementById("update-details");
+const updateDate = document.getElementById("update-date");
 
 const deleteInput = document.getElementById("delete-input");
 
 //Btn
 const addBtn = document.getElementById("add-btn");
+// const searchNumBtn = document.getElementById("search-num-btn");
 const updateBtn= document.getElementById("update-btn");
 const searchBtn = document.getElementById("search-btn");
 const saveBtn = document.getElementById("save-btn");
@@ -23,7 +27,7 @@ const clearBtn = document.getElementById("clear-btn");
 
 const displayTasks = document.getElementById("display-tasks");
 
-const tasks =  JSON.parse(localStorage.getItem('taskList')) || [];
+let tasks =  JSON.parse(localStorage.getItem('taskList')) || [];
 console.log(tasks);
 
 let currentIndex = null;
@@ -91,7 +95,91 @@ const update = () => {
     display();
 };
 
-const smartSearch = () => {};
+const smartSearch = () => {
+    currentTask = searchTitle.value;
+       
+    const getIndex = () => {
+       for(let i = 0; i < tasks.length ; i++){
+        if(tasks[i].title === currentTask){
+            return i;
+        }
+       }
+    }
+      
+    currentIndex = getIndex();
+
+    if(currentIndex > 0) {
+        updateTitle.value = tasks[currentIndex].title;
+        updateDetails.value = tasks[currentIndex].details;
+        updateDate.value = tasks[currentIndex].date;
+    }  
+
+    else {
+        return alert("task not found.");
+    }
+
+};
+
+const save = () => {
+    currentTitle = updateTitle.value;
+    currentDetails = updateDetails.value;
+    currentDate = updateDate.value;
+
+    currentTask = {"title": currentTitle , "details": currentDetails, "date": currentDate};
+    console.log(currentTask);
+
+    tasks[currentIndex] = currentTask;
+    console.log(tasks);
+
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+    console.log(localStorage.getItem('taskList'));
+    display();
+    clearInput();
+};
+
+const deleteTask = () => {
+    currentTask = deleteInput.value;
+
+    const getIndex = () => {
+
+    if(!isNaN(currentTask)){
+        return Number(currentTask)-1;
+    }
+    
+    else{
+      for(let i = 0 ; i < tasks.length; i++){
+        if(tasks[i].title === currentTask){
+            return i;
+        }
+      }  
+      return; 
+    }
+
+    }
+
+  currentIndex = getIndex();
+  
+  let firstArray = tasks.slice(0, currentIndex);
+  let secondArray = tasks.slice(currentIndex+1, tasks.length);
+
+  updatedArray = firstArray.concat(secondArray);
+  tasks = updatedArray;
+
+  console.log(tasks);
+
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+    console.log(localStorage.getItem('taskList'));
+    display();
+    clearInput();
+
+};
+
+const clear = () => {
+    tasks = [];
+    localStorage.removeItem('taskList');
+    display();
+    clearInput();
+};
 
 const clearInput = () =>  {
     const inputList = document.querySelectorAll(".input");
@@ -106,6 +194,9 @@ display();
 addBtn.addEventListener("click", addTask);
 updateBtn.addEventListener("click", update);
 searchBtn.addEventListener("click", smartSearch);
+saveBtn.addEventListener("click", save);
+deleteBtn.addEventListener("click", deleteTask);
+clearBtn.addEventListener("click", clear);
 
 // // incase to remove
 // localStorage.removeItem('taskList');
