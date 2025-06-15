@@ -10,9 +10,6 @@ const updateTaskDetails = document.getElementById("update-task-details");
 const updateTaskDate = document.getElementById("update-task-date");
 
 const searchTitle = document.getElementById("search-by-title");
-const updateTitle = document.getElementById("update-title");
-const updateDetails = document.getElementById("update-details");
-const updateDate = document.getElementById("update-date");
 
 const deleteInput = document.getElementById("delete-input");
 
@@ -35,6 +32,7 @@ let currentTitle;
 let currentDetails;
 let currentDate;
 
+
 const addTask = (title, details , date) =>{
     let obj = {};
     title = addTitle.value.trim();
@@ -45,12 +43,20 @@ const addTask = (title, details , date) =>{
     tasks.push(obj);
     localStorage.setItem('taskList', JSON.stringify(tasks));
     console.log(localStorage.getItem('taskList'));
-    
     clearInput();
     display();
 };
 
 const display = () => {
+
+    displayTasks.innerHTML = ` <tr>
+                    <th>#</th>
+                    <th>Task</th>
+                    <th>Details</th>
+                    <th>Due date</th>
+                            </tr>`;
+
+    //update tasks
     for(let i = 0; i < tasks.length ; i++){
         displayTasks.innerHTML += `
         <tr>
@@ -66,6 +72,27 @@ const display = () => {
    
 };
 
+
+const update = () => {
+    currentIndex = updateTaskNum.value -1;
+
+    currentTitle = updateTaskTitle.value;
+    currentDetails = updateTaskDetails.value;
+    currentDate = updateTaskDate.value;
+
+    currentTask = {"title": currentTitle , "details": currentDetails, "date": currentDate};
+    console.log(currentTask);
+
+    tasks[currentIndex] = currentTask;
+    console.log(tasks);
+
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+    console.log(localStorage.getItem('taskList'));
+    display();
+};
+
+const smartSearch = () => {};
+
 const clearInput = () =>  {
     const inputList = document.querySelectorAll(".input");
     for(let i = 0 ; i < inputList.length; i++){
@@ -73,11 +100,32 @@ const clearInput = () =>  {
     }
    
 };
+
 display();
 
 addBtn.addEventListener("click", addTask);
+updateBtn.addEventListener("click", update);
+searchBtn.addEventListener("click", smartSearch);
 
-
-// incase to remove
+// // incase to remove
 // localStorage.removeItem('taskList');
 
+
+
+//Notes on array methods
+// let myArray = ['🍇', '🍉', '🍊', '🍎', '🍍']
+// console.log(myArray);
+
+
+// myArray[1] = '🌹';
+// console.log(myArray);// ['🍇', '🌹', '🍊', '🍎', '🍍']
+
+// const sub1 = myArray.slice(0,1);
+// const sub2 = myArray.slice(2, myArray.length);
+// console.log(sub1);//['🍇']
+// console.log(sub2);//['🍊', '🍎', '🍍']
+
+// newArray = sub1.concat(sub2);
+// console.log(newArray);// ['🍇', '🍊', '🍎', '🍍']
+// myArray = newArray;
+// console.log(myArray);// ['🍇', '🍊', '🍎', '🍍']
