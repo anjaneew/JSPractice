@@ -1,11 +1,39 @@
-//A spreadsheet
+//Project 17 spreadsheet
 
 /**Functional Programming 
  * Functional Programming is a popular approach to software development. 
  * In Functional Programming, developers organize code into smaller functions, 
  * then combine those functions to build complex programs. */
 
+/**  infix
+ * In mathematics, an infix is a mathematical operator that appears between its
+ *  two operands. For example, 1 + 2 is an infix expression.
+ * Object values do not have to be primitive types, like a string or a number. 
+ * They can also be functions.
+*/
 
+const infixToFunction = {
+  //Object values are functions here
+  '+': (x , y) => x + y , 
+  '-': (x , y) => x - y , 
+  '*': (x , y) => x * y , 
+  '/': (x , y) => x / y , 
+};
+
+//doing calcuations in the spreadsheet
+const infixEval = (str, regex) => str.replace(regex, (_match, arg1, operator, arg2)=> infixToFunction[operator](parseFloat(arg1), parseFloat(arg2)));
+
+//order of operations
+const highPrecedence  = str => {
+  
+  const regex = /([\d.]+)([*\/])([\d.]+)/;
+  //pattern number  * or / operator another number.
+  //  . means decimal point or literal dot  
+  //so  10.99 is a match
+
+   const str2 = infixEval(str, regex);
+  // return regex.test(str);
+};
 
 //SPREADSHEET functions
 const isEven = num => num % 2 === 0 ;
@@ -148,8 +176,17 @@ const evalFormula = (x , cells) => {
    */
 
     const addCharacters = character1 => character2 => num => charRange(character1, character2).map(elemValue(num));
-    const rangeExpanded = x.replace(rangeRegex,  (match,  char1, num1, char2, num2)=> rangeFromString(num1, num2).map(addCharacters(char1)));
+    const rangeExpanded = x.replace(rangeRegex,  (_match,  char1, num1, char2, num2)=> rangeFromString(num1, num2).map(addCharacters(char1)(char2)));
+    const cellRegex = /[A-J][1-9][0-9]?/gi;
+    const cellExpanded = rangeExpanded.replace(cellRegex, match => idToText(match.toUpperCase()));
 };
+
+/**unused parameter
+ *  it is common convention to prefix an unused parameter with an underscore _. 
+ * You could also leave the parameter empty like so: (, char1) but it is often
+ *  clearer to name the parameter for future readability.
+ * Prefix your match parameter with an underscore.  _match
+ */
 
 /**window.onload
  * The global window object represents the browser window (or tab). 
