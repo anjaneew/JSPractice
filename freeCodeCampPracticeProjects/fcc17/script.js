@@ -86,9 +86,20 @@ const median = nums => {
 
 //To keep track of all of your spreadsheet's functions
 const spreadsheetFunctions = {
+  "": function (args){return args;},
   sum,
   average, 
   median,
+  even: nums => nums.filter(isEven),
+  someeven: nums => nums.some(isEven),
+  everyeven: nums => nums.every(isEven),
+  firsttwo: nums => nums.slice(0,2),
+  lasttwo: nums => nums.slice(-2),
+  has2: nums => nums.includes(2),
+  increment: nums => nums.map(num => num + 1),
+  random :([x,y]) => Math.floor(Math.random() * y + x),
+  range: nums => range(...nums),
+  nodupes: nums => [...new Set(nums)],
 };                 
 
 // function parsing logic to a string
@@ -110,7 +121,25 @@ const applyFunction = str => {
 
   const apply = (fn, args) => spreadsheetFunctions[fn.toLowerCase()](toNumberList(args));
 
-  return str2.replace(functionCall, ()=> {});
+
+  /**hasOwnProperty()
+   * To check if a property on a given object exists or not, you can use the 
+   * hasOwnProperty() method. The hasOwnProperty() method returns true or false 
+   * depending on if the property is found on the object or not.
+   * Here is an example of how to use the hasOwnProperty() method:
+
+          Example Code
+          const developerObj = {
+            name: 'John',
+            age: 34,
+            }
+
+      developerObj.hasOwnProperty('name'); // true
+      developerObj.hasOwnProperty('salary'); // false
+   */
+   
+  return str2.replace(functionCall, (match, fn, args)=> 
+  spreadsheetFunctions.hasOwnProperty(fn.toLowerCase()) ? apply(fn, args) : match);
 };
 
 
@@ -215,6 +244,8 @@ const evalFormula = (x , cells) => {
     const rangeExpanded = x.replace(rangeRegex,  (_match,  char1, num1, char2, num2)=> rangeFromString(num1, num2).map(addCharacters(char1)(char2)));
     const cellRegex = /[A-J][1-9][0-9]?/gi;
     const cellExpanded = rangeExpanded.replace(cellRegex, match => idToText(match.toUpperCase()));
+    const functionExpanded = applyFunction(cellExpanded);
+    return x === functionExpanded ?  functionExpanded : evalFormula( functionExpanded, cells);  
 };
 
 /**unused parameter
@@ -270,12 +301,12 @@ const update = event => {
  * element that changed. Assign the target property to a 
  * new variable called element. */
 
-const update = event => {
   const element = event.target;
   const value = element.value.replace(/\s/g, "");
     if(!value.includes(element.id) && value.startsWith('=')){
-    
-  }
-}
 
-};
+     // the contents start with an = character to trigger the function, 
+     // so you need to pass the substring of value starting at index 1.
+    element.value = evalFormula(value.slice(1), Array.from(document.getElementById("container").children)); 
+    }
+}
