@@ -33,6 +33,19 @@ const highPrecedence  = str => {
 
    const str2 = infixEval(str, regex);
   // return regex.test(str);
+
+  return str === str2 ? str : highPrecedence(str2);
+  /**recursive approach
+   * Your infixEval function will only evaluate the first 
+   * multiplication or division operation, because regex 
+   * isn't global. This means you'll want to use a recursive 
+   * approach to evaluate the entire string.
+   * If infixEval does not find any matches, it will return 
+   * the str value as-is. Using a ternary expression, check 
+   * if str2 is equal to str. If it is, return str, otherwise
+   *  return the result of calling highPrecedence() on str2.
+   */
+
 };
 
 //SPREADSHEET functions
@@ -77,6 +90,29 @@ const spreadsheetFunctions = {
   average, 
   median,
 };                 
+
+// function parsing logic to a string
+const applyFunction = str => {
+  const noHigh = highPrecedence(str);
+  const infix = /([\d.]+)([+-])([\d.]+)/;
+  const str2 = infixEval(noHigh, infix);
+
+  //                   look for function calls like sum(1, 4)
+  const functionCall = /([a-z0-9]*)\(([0-9., ]*)\)(?!.*\()/i;
+
+  /**Negative lookahead:  (?!.*\()  
+   * Fails the match if there’s any ( later in the string.
+   * .* → anything
+   * \( → a literal open parenthesis (
+   */
+
+  const toNumberList = args => args.split(',').map(parseFloat);
+
+  const apply = (fn, args) => spreadsheetFunctions[fn.toLowerCase()](toNumberList(args));
+
+  return str2.replace(functionCall, ()=> {});
+};
+
 
 //HELPER FUNCTIONS: 
 // 1 generate range of numbers
