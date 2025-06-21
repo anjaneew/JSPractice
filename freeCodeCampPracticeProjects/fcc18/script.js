@@ -14,7 +14,36 @@ let isCartShowing = false;
 
 const products = [
     {id: 1, name: "Vanilla Cupcakes (6 Pack)", price: 12.99, category: "Cupcake"},
-    // {id: , name: "", price: , category: }
+    {id: 2, name: "French Macaron", price: 3.99, category: "Macaron"},
+    {id: 3, name: "Pumpkin Cupcake", price: 3.99, category: "Cupcake"},
+    {id: 4, name: "Chocolate Cupcake", price: 5.99, category: "Cupcake"},
+    {id: 5, name: "Chocolate Pretzels (4 Pack)", price: 10.99, category: "Pretzel"},
+    {id: 6, name: "Strawberry Ice Cream", price: 2.99, category: "Ice Cream"},
+    {id: 7, name: "Chocolate Macarons (4 Pack)", price: 9.99, category: "Macaron"},
+    {id: 8, name: "Strawberry Pretzel", price: 4.99, category: "Pretzel"},
+    {id: 9, name: "Butter Pecan Ice Cream", price: 2.99, category: "Ice Cream"},
+    {id: 10, name: "Rocky Road Ice Cream", price: 2.99, category: "Ice Cream"},
+    {id: 11, name: "Vanilla Macarons (5 Pack)", price: 11.99, category: "Macaron"},
+    {id: 12, name: "Lemon Cupcakes (4 Pack)", price: 12.99, category: "Cupcake"},
+    // {id: , name: "", price: , category: },
 ];
 
+/**destructuring to extract multiple values from an array or object in a single statement
+ * destructure the name, id, price, and category properties from the object passed in
+ * ex: ({name, id, price, category}) => {}
+*/
+
+products.forEach(
+    (
+        {name, id, price, category} 
+    )=>{
+        dessertCards.innerHTML += `
+            <div class="dessert-card">
+                <h2>${name}</h2>
+                <p class="dessert-price">$${price}</p>
+                <p class="product-category">Category: ${category}</p>
+                <button id="${id}" class="btn add-to-cart-btn">Add to cart</button>
+            </div>
+        `;
+});
 
