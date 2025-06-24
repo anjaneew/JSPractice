@@ -109,18 +109,78 @@ class Player{
             this.velocity.y = 0; // stop falling if player hits bottom
         }
 
+        // prevent player from moving past left edge
         if(this.position.x < this.width){
-            this.position.x = this.width;
+            this.position.x = this.width; 
         }
 
+        // prevent player from moving past right edge
         if(this.position.x >= canvas.width - this.width * 2){
             this.position.x = canvas.width - this.width * 2;
         }
     }
 }
 
+//Platforms & platform logic
+
+class Platform {
+  constructor(x,y){
+    this.position = {x,y}; //⬇️objects &  shorthand property name syntax
+    this.width = 200;
+    this.height = proportionalSize(40);
+  }
+
+  draw(){
+    ctx.fillStyle = "#acd157";
+    ctx.fillRect(this.position.x,this.position.y,this.width,this.height);
+  }
+}
+
+
+/**objects &  shorthand property name syntax
+ * 
+ * When working with objects where the property name and value are the 
+ * same, you can use the shorthand property name syntax. This syntax 
+ * allows you to omit the property value if it is the same as the 
+ * property name.
+
+    Example Code
+    // using shorthand property name syntax
+    obj = {
+    a, b, c
+    }
+
+    The following code is the same as:
+
+    Example Code
+    obj = {
+    a: a,
+    b: b,
+    c: c
+    }
+ */
 
 const player = new Player(); 
+
+const platformPositions = [
+    {x:500,y:proportionalSize(450)},
+    {x:700,y:proportionalSize(400)},
+    {x:850,y:proportionalSize(350)},
+    {x:900,y:proportionalSize(350)},
+    {x:1050,y:proportionalSize(150)},
+    {x:2500,y:proportionalSize(450)},
+    {x:2900,y:proportionalSize(400)},
+    {x:3150,y:proportionalSize(350)},
+    {x:3900,y:proportionalSize(450)},
+    {x:4200,y:proportionalSize(400)},
+    {x:4400,y:proportionalSize(200)},
+    {x:4700,y:proportionalSize(150)},
+];
+
+const platforms = platformPositions.map(
+    (platform) => new Platform(platform.x,platform.y)
+
+);
 
 /**The requestAnimationFrame() web API  && clearRect() Web API
  *  
@@ -146,21 +206,90 @@ const player = new Player();
  */
 
 const animate = () => {
-    requestAnimationFrame(animate);
-    ctx.clearRect(0,0,canvas.width, canvas.height);
+    //tells browser to run animate() on next frame for smooth animation loop
+    requestAnimationFrame(animate); 
+
+    // clears entire canvas before redrawing 
+    ctx.clearRect(0,0,canvas.width, canvas.height); 
+
+    platforms.forEach((platform)=> {
+        platform.draw();
+    });
+
+
+    // updates player position and redraws it on canvas each frame
     player.update();
+
+
+    //move the platforms with the player
+    if(keys.rightKey.pressed && isCheckpointCollisionDetectionActive){
+        platforms.forEach((platform)=>{
+            platform.position.x -= 5;
+        });
+    }
+    else if(keys.leftKey.pressed && isCheckpointCollisionDetectionActive){
+        platforms.forEach((platform)=>{
+            platform.position.x +=5;
+        })
+
+    }
+
+    //collision detection logic 
+    platforms.forEach((platform)=> {
+        const collisionDetectionRules = [
+            player.position.y + player.height <= platform.position.y,
+            player.position.y + player.height + player.velocity.y >= platform.position.y , 
+            player.position.x >= platform.position.x - player.width/ 2, 
+            player.position.x <= platform.position.x + platform.width - player.width/ 3,
+        ];
+
+        //every method  //prevents falling
+        if(collisionDetectionRules.every((rule)=> rule)){
+            player.velocity.y = 0;
+            return;
+        }
+
+        const platformDetectionRules = [
+            player.position.x >= platform.position.x - player.width/ 2,
+            player.position.x <= platform.position.x + platform.width - player.width/3,
+            player.position.y + player.height >= platform.position.y,
+            player.position.y <= platform.position.y + platform.height,
+        ];
+
+        //prevents jumping through the platforms
+        if(platformDetectionRules.every((rule)=> rule)){
+            player.position.y = platform.position.y + player.height;
+            player.velocity.y = gravity;
+        }
+    });
+
+    /**Every Method
+     * if statement that checks if every rule in the collisionDetectionRules array 
+     * is truthy. 
+     */
+
+    /**collision detection logic 
+     * 
+     * When you start the game, you will notice that the position of 
+     * the platforms is animating alongside the player. But if you try 
+     * to jump below one of the platforms, then you will jump right 
+     * through it.
+     * 
+     * To fix this issue, you will need to add collision detection
+     * logic to the game.
+     * **/
 
 
     //add the logic for increasing or decreasing a player's velocity based on if they move to the left or right of the screen.
 
     if(keys.rightKey.pressed && player.position.x < proportionalSize(400)){
-        player.velocity.x = 5;
+        player.velocity.x = 5; //go right
     }
     else if(keys.leftKey.pressed && player.position.x > proportionalSize(100)){
-        player.velocity.x = -5;
+        player.velocity.x = -5; //go left
     }
     else{
-        player.velocity.x = 0;
+        player.velocity.x = 0; //no movement
     }
 };
 
@@ -175,7 +304,11 @@ const keys = {
 //The next step is to add the functionality that will be responsible for moving the 
 // player across the screen.
 
+//velocity = Speed + direction.
+
 const movePlayer = (key, xVelocity, isPressed) =>{
+
+     // stop all movement if checkpoint logic is off
     if(!isCheckpointCollisionDetectionActive){
         player.velocity.x = 0;
         player.velocity.y = 0;
@@ -184,14 +317,28 @@ const movePlayer = (key, xVelocity, isPressed) =>{
 
     switch(key){
         case "ArrowLeft":
-            keys.leftKey.pressed = isPressed;
+            keys.leftKey.pressed = isPressed; // update key status
 
             if(xVelocity === 0){
-                player.velocity.x = xVelocity;
+                player.velocity.x = xVelocity; // stop if no velocity
             }
 
-            player.velocity.x -= xVelocity;
+            player.velocity.x -= xVelocity; // move left
             break; 
+        case "ArrowUp":
+        case " ":
+        case "Spacebar":
+            player.velocity.y -= 8;   // jump up
+            break;   
+            
+        case "ArrowRight":
+            keys.rightKey.pressed = isPressed;  // update key status
+            
+            if(xVelocity === 0 ){
+                player.velocity.x = xVelocity; // stop if no velocity
+            }
+ 
+            player.velocity.x += xVelocity;  // move right
     }
 
 
@@ -200,9 +347,28 @@ const movePlayer = (key, xVelocity, isPressed) =>{
 const startGame = () =>{
     canvas.style.display = "block";
     startScreen.style.display = "none";
-    player.draw();
+
+    animate();
 };
 
 
 
 startBtn.addEventListener("click", startGame);
+window.addEventListener("keydown", ({key})=>{
+    movePlayer(key,8,true); //moves the player
+});
+
+window.addEventListener("keyup", ({key})=>{
+    movePlayer(key,0,false); //moves the player
+});
+
+/***destructuring assignment in the parameter 
+ * 
+ * Here is the syntax for using the destructuring assignment in the parameter list of the
+ *  arrow function:
+ * Example Code
+        * btn.addEventListener('click', ({ target }) => {
+        * console.log(target);
+        * });
+ * 
+ */
