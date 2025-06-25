@@ -1,4 +1,4 @@
-//Project 19 Platformer Game
+//Project 20 Platformer Game
 
 const startBtn = document.getElementById("start-btn");
 const canvas = document.getElementById("canvas");
