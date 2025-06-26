@@ -34,5 +34,6 @@ rulesBtn.addEventListener("click", ()=>{
 
 rollDiceBtn.addEventListener("click",()=>{
     
+    
 });
 
