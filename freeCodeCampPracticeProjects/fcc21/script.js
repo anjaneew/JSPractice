@@ -18,7 +18,29 @@ let rolls = 0;
 let score = 0;
 let round = 1;
 
+//done
+rollDiceBtn.addEventListener("click",()=>{
+    diceValuesArr = [];
+    for(let i = 0; i < 5; i++){
+        const random = Math.floor(Math.random() * 6) + 1;
+        diceValuesArr.push(random);
 
+         listOfAllDice.textContent =  diceValuesArr.sort((a,b)=> a - b);
+    }
+
+    listOfAllDice.forEach((dice, index)=>{
+        dice.textContent = diceValuesArr[index];
+    });
+    
+});//hellod
+
+
+//step 4
+rollDiceBtn.addEventListener("click", () => {
+  rollDice();
+});
+
+//done
 rulesBtn.addEventListener("click", ()=>{
     isModalShowing = !isModalShowing
 
@@ -32,8 +54,4 @@ rulesBtn.addEventListener("click", ()=>{
     }
 });
 
-rollDiceBtn.addEventListener("click",()=>{
-    
-    
-});
 
