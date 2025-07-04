@@ -71,7 +71,7 @@ const choose = () => {
                 <img  src="images/6.png" alt="array method">
             `;
             break; 
-        default:                   
+        default:                    
              notes.innerHTML = `<ol>
              <li>Array.find()</li>
              <li>Array.filter()</li>
@@ -103,23 +103,23 @@ const clearInputs = () => {
 
 //search methods
 
-//Method 1 -Array.find() (Best for Single Match)
+//Method 3 -for...of Loop (works everywhere)
 const search = () => {
-    const editStudent = students.find(
-        //TWO Ways ✔️ 
-        // (student)=> {return student.name === searchInput.value.trim()}); ✔️
-           (student)=> student.name === searchInput.value.trim()); //✔️
+    let editStudent; 
+    for(const oneStudent of students){
+        if(oneStudent.name === searchInput.value.trim()){
+            editStudent = oneStudent;
+    }
     if(editStudent){
         console.log(editStudent.id);
-        resultsContainer.innerHTML = `<h3> METHOD: Array.find(callback function)</h3> <br>
+        resultsContainer.innerHTML = `<h3> METHOD: for...of Loop (classic works everywhere)</h3> <br>
         <strong> Data: </strong>  Student ID: ${editStudent.id} Name: ${editStudent.name} ✔️`;
-    }  
+    }   
     else{
         console.log("not found");
         resultsContainer.innerHTML = `not found 🙅‍♂️🙅‍♀️🙅`;
     }  
-};
-
+}};
 
 
 //Event Listeners

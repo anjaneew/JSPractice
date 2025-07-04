@@ -71,7 +71,7 @@ const choose = () => {
                 <img  src="images/6.png" alt="array method">
             `;
             break; 
-        default:                   
+        default:                    
              notes.innerHTML = `<ol>
              <li>Array.find()</li>
              <li>Array.filter()</li>
@@ -103,23 +103,23 @@ const clearInputs = () => {
 
 //search methods
 
-//Method 1 -Array.find() (Best for Single Match)
+//Method 2 -Array.filter() (Best for Multiple Matches)
 const search = () => {
-    const editStudent = students.find(
-        //TWO Ways ✔️ 
-        // (student)=> {return student.name === searchInput.value.trim()}); ✔️
+    const editStudent = students.filter(
+        
            (student)=> student.name === searchInput.value.trim()); //✔️
-    if(editStudent){
-        console.log(editStudent.id);
-        resultsContainer.innerHTML = `<h3> METHOD: Array.find(callback function)</h3> <br>
-        <strong> Data: </strong>  Student ID: ${editStudent.id} Name: ${editStudent.name} ✔️`;
+
+    if(editStudent.length > 0){
+       for (let i = 0; i < editStudent.length; i++){
+            resultsContainer.innerHTML = `<h3>METHOD: Array.filter(callback function)</h3> <br> 
+             <strong> Data: </strong> student ID: ${editStudent[i].id} Name: ${editStudent[i].name} ✔️`
+       }
     }  
     else{
         console.log("not found");
         resultsContainer.innerHTML = `not found 🙅‍♂️🙅‍♀️🙅`;
     }  
 };
-
 
 
 //Event Listeners
