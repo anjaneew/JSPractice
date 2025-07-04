@@ -18,20 +18,36 @@ const transactions = () => {
         username = newUserInput.value; 
         display.textContent = `New user registered`;
         newUserInput.value = "";
-        userAccounts.push({holder: username, balance: 0.00})
+        userAccounts.push({holder: username, balance: 0.00});
+        console.log(userAccounts);
     };
 
     const deposit = () => {
-        username = usernameInput.value; 
-        if(userAccounts.holder.includes(username)){
-            let amount = parseFloat(amountInput.value);
-            balance += amount;
-            console.log(`${username} has deposited ${amount}. 
-                \n The new balance is ${balance}`);
-            display.textContent =    `${username} has deposited ${amount}. 
-            \n The new balance is ${balance}`; 
+        
+        try{
+             display.textContent =   "";
+             username = usernameInput.value; 
+            const accountHolder = userAccounts.find(user => user.holder === username);
+        
+            if(accountHolder){
+                balance = accountHolder.balance;
+                let amount = parseFloat(amountInput.value);
+                balance += amount;
+                console.log(`${username} has deposited ${amount}. 
+                    \n The new balance is ${balance}`);
+                display.textContent =    `${username} has deposited ${amount}. 
+                \n The new balance is ${balance}`;
+                accountHolder.balance = balance; //saves new balance in the array
+                console.log(userAccounts);
+            }
+            else{
+                display.textContent = "Account not found";
+            }
+
         }
-        else{
+        
+        catch {
+            console.error(error)
             display.textContent = "Account not found";
         }
         
@@ -40,23 +56,33 @@ const transactions = () => {
     };
 
     const withdraw = () => {
-        username = usernameInput.value;
-        let amount = parseFloat(amountInput.value);
 
-        if(userAccounts.holder.includes(username)){
-            if( amount < balance){
+        try{
+            display.textContent =   "";
+            username = usernameInput.value; 
+            const accountHolder = userAccounts.find(user => user.holder === username);
+            
+            if(accountHolder){
+                balance = accountHolder.balance;
+                let amount = parseFloat(amountInput.value);
                 balance -= amount;
                 console.log(`${username} has withdrawn ${amount}. 
-                \n The new balance is ${balance}`);
-                display.textContent =  `${username} has withdrawn ${amount}. 
+                    \n The new balance is ${balance}`);
+                display.textContent =    `${username} has withdrawn ${amount}. 
                 \n The new balance is ${balance}`;
-                
-            }
+                accountHolder.balance = balance; //saves new balance in the array
+                console.log(userAccounts);
+            }             
             else{
-                console.log(`${username} has insufficient fonds for this transaction.\n The account balance available is ${balance}`);
-                display.textContent = `${username} has insufficient fonds for this transaction.\n The account balance available is ${balance}`;
+                display.textContent = "Account not found";
             }
-        }        
+        }
+        
+        catch {
+            console.error(error)
+            display.textContent = "Account not found";
+        }
+
         usernameInput.value = "";
         amountInput.value = "";
         
