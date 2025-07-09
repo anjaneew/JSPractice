@@ -1,0 +1,40 @@
+
+@font-face{
+    /* internal file */
+    src: url(fonts/LibertinusMono-Regular.ttf);
+    font-family: LibertinusMono;
+}
+
+body{
+    background-color: rgb(3, 59, 97);
+}
+h1{
+    color: rgb(36, 158, 152);
+    font-family: "Roboto", sans-serif;
+}
+a{
+    color: #1f76a8;
+    font-style: italic;
+    font-weight: bold;
+    padding-right: 10px;
+    text-decoration: none;
+}
+a:hover{
+    background-color: #1f76a8;
+}
+h2,h3{
+    color: #168d87;
+    font-family: "LibertinusMono", sans-serif;
+    
+}
+#poem{
+    font-family:  "Libertinus Mono", sans-serif;
+}
+p{
+    color: hsl(208, 67%, 65%);
+    font-family: "LibertinusMono", sans-serif;
+    font-size: 1.2em; /* 1em = 100% */
+}
+div{
+    padding: 10px;
+}
