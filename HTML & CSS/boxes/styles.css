@@ -1,0 +1,20 @@
+body{
+    background-color: darkgrey;
+    margin: none;
+}
+h1{
+    text-shadow: -3px -3px 5px rgb(52, 231, 207), 3px 3px 5px rgb(14, 47, 138);
+        /* horizontal verticle blur*/
+        /* two shadows possible */
+}
+.boxes{
+    height: auto;
+    width:200px;
+    min-width: 100px;
+    padding: 10px;
+    background-color: bisque;
+    box-shadow: 3px 3px 5px; 
+}
+#box1{
+    margin-left: auto;
+}
