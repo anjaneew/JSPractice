@@ -44,7 +44,30 @@ const washDishes = () => {
 };
 
 
-cleanRoom().then(value => {console.log(value); return sweepFloor()})
-           .then(value => {console.log(value); return washDishes()})
-           .then(value => {console.log(value); console.log("All Done!!!")})
-           .catch(error => console.log(error));
+// cleanRoom().then(value => {console.log(value); return sweepFloor()})
+//            .then(value => {console.log(value); return washDishes()})
+//            .then(value => {console.log(value); console.log("All Done!!!")})
+//            .catch(error => console.log(error));
+
+async function cleaning(){
+
+    try{
+
+        const cleanRoomResult = await cleanRoom();
+        console.log(cleanRoomResult);
+
+        const sweepResult = await sweepFloor();
+        console.log(sweepResult);
+
+        const dishwashResult = await washDishes();
+        console.log(dishwashResult);
+
+        console.log("All done!");
+
+    }
+    catch(error){
+        console.error(error);
+    }
+}
+
+cleaning();
