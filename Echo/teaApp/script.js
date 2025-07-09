@@ -57,8 +57,35 @@ const pourTea = () => {
 };
 
 
-getGroceries().then(value => {console.log(value); return waterBoil()})
-              .then(value => {console.log(value); return addTeaBag()})
-              .then(value => {console.log(value); return pourTea()})
-              .then(value => {console.log(value); console.log("Tea is served 🫖")})
-              .catch(error => console.log(error));
+// getGroceries().then(value => {console.log(value); return waterBoil()})
+//               .then(value => {console.log(value); return addTeaBag()})
+//               .then(value => {console.log(value); return pourTea()})
+//               .then(value => {console.log(value); console.log("Tea is served 🫖")})
+//               .catch(error => console.log(error));
+
+async function makeTea() {
+    
+    try{
+
+        const getGroceriesResult = await getGroceries();
+        console.log(getGroceriesResult);
+
+        const waterBoilResult = await waterBoil();
+        console.log(waterBoilResult);
+
+        const addTeaBagResult = await addTeaBag();
+        console.log(addTeaBagResult);
+
+        const pourTeaResult = await pourTea();
+        console.log(pourTeaResult);
+
+        console.log("Tea is served 🫖");
+
+    }
+
+    catch(error){
+        console.error(error);    
+    }
+}
+
+makeTea();
