@@ -1,0 +1,39 @@
+div{
+    border: 5px solid rgb(16, 94, 70);
+    margin: 100px;
+    height: 100px;
+}
+
+#box1{
+    overflow: visible; 
+    /* the usual */
+}
+
+#box2{
+    overflow: hidden; 
+    /* not visible */
+}
+
+#box3{
+    overflow: clip; 
+    overflow-clip-margin: 25px;
+    /* hybrid of hidden. only upto that is visible */
+}
+
+#box4{
+    overflow: scroll; 
+    /* useful, if text is short, its disabled but shown */
+}
+
+#box5{
+    overflow: auto; 
+}
+
+#box6{
+    overflow: auto; 
+    /*most useful, if text is short, its disabled but shown */
+}
+
+img{
+    height: 200px;
+}
