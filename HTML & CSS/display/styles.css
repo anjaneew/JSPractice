@@ -1,0 +1,93 @@
+.block{
+    border: 3px solid black
+}
+
+/* originals */
+#div1{
+    background-color: rgb(213, 216, 47);
+}
+#span1{
+    background-color: rgb(153, 226, 153);
+}
+#h{
+    background-color: rgb(47, 238, 197);
+}
+
+/* changing */
+
+#div2{
+    background-color: rgb(207, 180, 61);
+    width: 100px;
+    height: 100px;
+}
+#span2{
+    background-color: rgb(42, 123, 155);
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+#h2{
+    background-color: rgb(154, 107, 192);
+    width: 100px;
+    height: 100px;
+}
+
+/* inline */
+#h3{
+    background-color: rgb(204, 122, 179);
+    display: inline;
+    /* height and width: get ignored */
+    width: 100px;
+    height: 100px;
+}
+#div3{
+    background-color: rgb(27, 207, 102);
+    display: inline;
+     /* height and width: get ignored */
+    width: 100px;
+    height: 100px;
+}
+#span3{
+    background-color: rgb(230, 90, 35);
+    width: 100px;
+    height: 100px;
+}
+/* inline-block - height and width also applies */
+#h4{
+    background-color: rgb(13, 78, 218);
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+#div4{
+    background-color: rgb(43, 199, 108);
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+#span4{
+    background-color: rgb(216, 33, 207);
+    display: inline-block; 
+    width: 100px;
+    height: 100px;
+}
+/* visibilty hidden Vs display none s */
+#h5{
+    background-color: rgb(218, 13, 23);
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    visibility: hidden;
+}
+#div5{
+    background-color: rgb(69, 199, 43);
+    display: none;
+    width: 100px;
+    height: 100px;
+}
+#span5{
+    background-color: rgb(23, 184, 224);
+    display: inline-block; 
+    width: 100px;
+    height: 100px;
+}
