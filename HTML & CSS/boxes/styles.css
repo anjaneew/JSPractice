@@ -9,12 +9,19 @@ h1{
 }
 .boxes{
     height: auto;
-    width:200px;
-    min-width: 100px;
+    width:150px;
     padding: 10px;
     background-color: bisque;
     box-shadow: 3px 3px 5px; 
 }
 #box1{
     margin-left: auto;
+}
+#box2{
+    margin-right: auto; 
+    /* no change cz this is the dafult */
+}
+#box3{
+    margin: auto; 
+    /* center */
 }
