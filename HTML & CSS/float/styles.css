@@ -1,4 +1,19 @@
-#stranger{
+#stranger1{
     width: 100px;
     height:auto;
+    float: left;
+    margin: 10px;
+}
+
+#stranger2{
+    width: 100px;
+    height:auto;
+    float: right;
+    margin: 10px;
+}
+
+body{
+    border: 2px solid black;
+    display: flow-root; 
+    /* this prevent image getting out of border in container */
 }
