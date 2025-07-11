@@ -1,4 +1,4 @@
-//project 23 fcc Authors page
+//Project 23 fcc Authors page
 
 const authorContainer = document.getElementById("author-container");
 const loadMoreBtn = document.getElementById("load-more-btn");
@@ -20,7 +20,7 @@ const displayAuthors = (authors) => {
         authorContainer.innerHTML += `
         <div id="${index}" class="user-card">
         <h2 class="author-name">${author}</h2>
-        <img class="user-img" src="${image}" alt="${author} avatar">
+        <img class="user-img" src="${image}" alt="${author} avatar" referrerpolicy="no-referrer">
         <div class="purple-divider"></div>
         <p class="bio">${bio.length > 50 ? bio.slice(0, 50) + '...' : bio} </p>
         <a class="author-link" href=${url} target="_blank">${author}'s author page</a>
