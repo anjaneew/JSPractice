@@ -17,10 +17,47 @@ body{
     margin: 10px;
 }
 
+
+.web{
+    color: blue;
+    cursor: pointer;
+}
+
 button, input{
-    border: none;
+    
     height: 25px;
     border-radius: 10px;
     padding: 3px 2px;
     text-align: center;
+}
+
+label{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(15, 4, 78);
+
+}
+
+h1, button{
+    color: rgb(15, 4, 78);
+    font-weight: bold;
+}
+
+button{
+    padding: 5px 10px;
+    background-color: rgb(56, 116, 235);
+    border: 2px;
+    box-shadow: 3px 3px 5px;
+}
+
+button:hover{
+    background-color: rgb(81, 130, 230);
+    box-shadow: 1px 1px 3px;
+}
+
+button:active{
+    
+    background-color: rgb(123, 165, 248);
+    border: none;
+    box-shadow: none;
 }
