@@ -1,0 +1,45 @@
+body{
+    background-color: rgb(164, 212, 226);
+    margin: none;
+    display: flow-root;
+    
+}
+
+#header, #input-container{
+    text-align: center;
+}
+
+.card{
+    border: 3px solid;
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px rgb(99, 95, 71);
+    height: 500px;
+    width: 500px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(97, 214, 165);
+}
+
+.card:hover{
+    box-shadow: 1px 1px 1px rgb(99, 95, 71);
+    background-color: rgb(164, 226, 200);
+}
+
+.card-image{
+    width: 300px;
+    height: 446px;
+}
+
+.image-container{
+    margin-left: 0;
+    margin-top: 0;
+    text-align: right;
+}
+
+.details-container{
+    text-align: left;
+    margin-left: 10px;
+}
