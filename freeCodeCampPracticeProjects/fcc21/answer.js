@@ -16,6 +16,7 @@ let score = 0;
 let round = 1;
 let rolls = 0;
 
+//done
 const rollDice = () => {
   diceValuesArr = [];
 
@@ -29,11 +30,13 @@ const rollDice = () => {
   });
 };
 
+//done
 const updateStats = () => {
   rollsElement.textContent = rolls;
   roundElement.textContent = round;
 };
 
+//done
 const updateRadioOption = (index, score) => {
   scoreInputs[index].disabled = false;
   scoreInputs[index].value = score;

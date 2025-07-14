@@ -22,8 +22,8 @@ let round = 1;
 rollDiceBtn.addEventListener("click",()=>{
     diceValuesArr = [];
     for(let i = 0; i < 5; i++){
-        const random = Math.floor(Math.random() * 6) + 1;
-        diceValuesArr.push(random);
+        const randomDice= Math.floor(Math.random() * 6) + 1;
+        diceValuesArr.push(randomDice);
 
          listOfAllDice.textContent =  diceValuesArr.sort((a,b)=> a - b);
     }
@@ -34,10 +34,29 @@ rollDiceBtn.addEventListener("click",()=>{
     
 });//hellod
 
+//done
+const updateStats = () =>{
+    rollsElement.textContent = rolls;
+    roundElement.textContent = round;
+};
 
-//step 4
+//done
+const updateRadioOption = (index, score) => {
+    scoreInputs[index].disabled = false;
+    scoreInputs[index].value = score;
+    scoreSpans[index].textContent = `, score = ${score}`;
+};
+
 rollDiceBtn.addEventListener("click", () => {
-  rollDice();
+    if(rolls === 3){
+        alert("You have made three rolls this round. Please select a score.");
+    } 
+    else{
+        rolls++;
+        rollDice();
+        updateStats();
+    }
+  
 });
 
 //done
