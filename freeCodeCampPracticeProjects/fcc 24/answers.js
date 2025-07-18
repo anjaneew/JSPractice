@@ -16,6 +16,7 @@ const allCategories = {
   560: { category: "Backend Development", className: "backend" },
 };
 
+//done
 const forumCategory = (id) => {
   let selectedCategory = {};
 
@@ -36,7 +37,7 @@ const forumCategory = (id) => {
   return `<a href="${url}" class="${linkClass}" target="_blank">
     ${linkText}
   </a>`;
-};
+};//done
 
 //done
 const timeAgo = (time) => {
@@ -61,6 +62,7 @@ const timeAgo = (time) => {
   return `${daysAgo}d ago`;
 };//done
 
+//done
 const viewCount = (views) => {
   const thousands = Math.floor(views / 1000);
 
@@ -69,8 +71,9 @@ const viewCount = (views) => {
   }
 
   return views;
-};
+};//done
 
+//done
 const avatars = (posters, users) => {
   return posters
     .map((poster) => {
@@ -84,7 +87,7 @@ const avatars = (posters, users) => {
       }
     })
     .join("");
-};
+};//done
 
 
 //done
