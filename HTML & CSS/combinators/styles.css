@@ -1,0 +1,51 @@
+div{
+    border: 2px solid;
+    padding: 20px;
+    margin: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+#container{
+    background-color: antiquewhite;
+    width: 300px;
+}
+
+#son{
+    background-color: rgb(223, 100, 151);
+    
+}
+
+#sibling1{
+    background-color: rgb(91, 187, 231);
+    margin-left: 40px;
+}
+
+#sibling2{
+    background-color: rgb(70, 231, 183);
+    margin-left: 40px;
+}
+
+/* decendents */
+#container p{ 
+    font-weight: bold;
+    background-color: yellow;
+}
+
+/* child */
+#container > p {
+    color: rgb(57, 13, 216);
+    font-size: large;
+}
+
+/* general siblings */
+#container ~ div{
+    border-color: blue;
+}
+
+/* adjacent sibling */
+#container + div{
+    box-shadow: 5px 5px 10px black;
+    cursor: pointer;
+}
+

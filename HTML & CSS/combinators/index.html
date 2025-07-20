@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combinators</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- combinators = explains relationship between selectors
+      = decendent
+    > = child
+    ~ = general sibling
+    + = adjacent sibling  -->
+
+    <div id="container">
+        I am the main man - the container.
+        <p>I am a child of container</p>
+        <p>I am a child of container</p>
+        <div id="son">
+            I am a child of container - but i am a div
+            <p>I am a grandchild of container</p>
+            <p>I am a grandchild of container</p>
+        </div>
+    </div>
+    <div id="sibling1">
+        I am sibling1 of the main man - the container.
+        <p>I am the neice</p>
+        <p>I am the nephew</p>
+    </div>
+    <div id="sibling2">
+        I am sibling2 of the main man - the container.
+        <p>I am the neice</p>
+        <p>I am the nephew</p>
+    </div>
+</body>
+</html>
